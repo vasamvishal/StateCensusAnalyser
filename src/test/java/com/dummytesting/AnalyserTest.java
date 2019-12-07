@@ -14,4 +14,13 @@ public class AnalyserTest {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION, e.type);
         }
     }
+    @Test
+    public void shoulReturnException_forImproperFile()  {
+        try {
+            Analyser stateCensusAnalyser = new Analyser();
+            stateCensusAnalyser.csvFileLoading("/home/user/VideosStateCode.csv", "com.dummyTesting.StateCensusData");
+        } catch (StateCensusAnalyserException e) {
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.NO_SUCHFILE, e.type);
+        }
+    }
 }

@@ -36,8 +36,6 @@ public class Analyser {
             }
         } catch (NoSuchFileException e) {
             throw new StateCensusAnalyserException("please enter proper file name", StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION);
-        } catch (RuntimeException e) {
-            throw new StateCensusAnalyserException("Please enter proper fileName Or Delimiter Problem Or Header Problem ", StateCensusAnalyserException.ExceptionType.RUNTIME_ERROR);
         } catch (IOException e) {
             throw new StateCensusAnalyserException("Please enter proper input/output file", StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION);
         } catch (ClassNotFoundException e) {
