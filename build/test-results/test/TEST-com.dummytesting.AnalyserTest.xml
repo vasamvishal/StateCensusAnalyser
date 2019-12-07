@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.dummytesting.AnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-12-07T13:19:28" hostname="admin1-LIVA-Z2V" time="0.022">
+<testsuite name="com.dummytesting.AnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-12-07T13:39:08" hostname="admin1-LIVA-Z2V" time="0.015">
   <properties/>
-  <testcase name="ShouldCatchException_forImproperDelimiter" classname="com.dummytesting.AnalyserTest" time="0.022">
-    <failure message="java.lang.AssertionError: expected:&lt;RUNTIME_ERROR&gt; but was:&lt;INPUT_FILE_EXCEPTION&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;RUNTIME_ERROR&gt; but was:&lt;INPUT_FILE_EXCEPTION&gt;
+  <testcase name="shouldCatchException_ForImProperJsonfile" classname="com.dummytesting.AnalyserTest" time="0.015">
+    <failure message="java.lang.AssertionError: expected:&lt;NO_SUCHFILE&gt; but was:&lt;INPUT_FILE_EXCEPTION&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;NO_SUCHFILE&gt; but was:&lt;INPUT_FILE_EXCEPTION&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at com.dummytesting.AnalyserTest.ShouldCatchException_forImproperDelimiter(AnalyserTest.java:41)
+	at com.dummytesting.AnalyserTest.shouldCatchException_ForImProperJsonfile(AnalyserTest.java:74)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
