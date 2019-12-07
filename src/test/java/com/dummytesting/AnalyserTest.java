@@ -74,4 +74,15 @@ public class AnalyserTest {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.NO_SUCHFILE,e.type);
         }
     }
+    @Test
+    public void shouldCatchExceptionIOException_ForImProperJsonfile()  {
+        try {
+            Analyser analyser = new Analyser();
+            analyser.csvFileLoading("/home/user/snap/StateCensusData/.csv","com.dummyTesting.StateCensusData");
+            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/AreaInSqKm.json");
+            Assert.assertEquals("Uttar Pradesh",stateCensusData.get(0).getState());
+        } catch (StateCensusAnalyserException e) {
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION,e.type);
+        }
+    }
 }
