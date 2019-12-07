@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.dummytesting.AnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-07T12:58:55" hostname="admin1-LIVA-Z2V" time="0.209">
+  <properties/>
+  <testcase name="shouldReturnRecords_ForProperFile" classname="com.dummytesting.AnalyserTest" time="0.209"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
