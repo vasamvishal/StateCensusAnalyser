@@ -45,5 +45,16 @@ public class Analyser {
         }
         return noOfRecord;
     }
-
+    public List<StateCensusData> writeToJson(String fileName) throws StateCensusAnalyserException {
+        try {
+            Gson gson = new Gson();
+            String json = gson.toJson(recordList);
+            FileWriter writer = new FileWriter(fileName);
+            writer.write(json);
+            writer.close();
+        } catch (IOException e) {
+            throw new StateCensusAnalyserException("Please enter proper input/output file", StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION);
+        }
+        return recordList;
+    }
 }
