@@ -3,6 +3,8 @@ package com.dummytesting;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 public class AnalyserTest {
     @Test
     public void shouldReturnRecords_ForProperFile() {
@@ -33,7 +35,7 @@ public class AnalyserTest {
         }
     }
     @Test
-    public void ShouldCatchException_forImproperDelimiter()  {
+    public void shouldCatchException_forImproperDelimiter()  {
         try {
             Analyser analyser = new Analyser();
             analyser.csvFileLoading("/home/user/Videos/StateCensusDataDuplicate.csv", "com.dummyTesting.StateCensusData");
@@ -48,6 +50,17 @@ public class AnalyserTest {
             analyser.csvFileLoading("/home/user/snap/StateCensusDataDuplicate.csv", "com.dummyTesting.StateCensusData");
         } catch (StateCensusAnalyserException e) {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.RUNTIME_ERROR, e.type);
+        }
+    }
+    @Test
+    public void shouldCatchException_inJsonfile()  {
+        try {
+            Analyser analyser = new Analyser();
+            analyser.csvFileLoading("/home/user/snap/StateCensusData.csv","com.dummyTesting.StateCensusData");
+            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/AreaInSqKm.json");
+            Assert.assertEquals("Uttar Pradesh",stateCensusData.get(0).getState());
+        } catch (StateCensusAnalyserException e) {
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION,e.type);
         }
     }
 }
