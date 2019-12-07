@@ -18,7 +18,7 @@ public class AnalyserTest {
     public void shoulReturnException_forImproperFile()  {
         try {
             Analyser stateCensusAnalyser = new Analyser();
-            stateCensusAnalyser.csvFileLoading("/home/user/VideosStateCode.csv", "com.dummyTesting.StateCensusData");
+            stateCensusAnalyser.csvFileLoading("/home/user/VideosStateCode.csv", "com.dummytesting.StateCensusData");
         } catch (StateCensusAnalyserException e) {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.NO_SUCHFILE, e.type);
         }
@@ -27,7 +27,16 @@ public class AnalyserTest {
     public void shoulReturnException_forInCorrectType() {
         try {
             Analyser stateCensusAnalyser = new Analyser();
-            stateCensusAnalyser.csvFileLoading("/home/user/PicturesStateCode.pdf", "com.dummyTesting.StateCensusData");
+            stateCensusAnalyser.csvFileLoading("/home/user/Videos/StateCode.pdf", "com.dummytesting.StateCensusData");
+        } catch (StateCensusAnalyserException e) {
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.RUNTIME_ERROR, e.type);
+        }
+    }
+    @Test
+    public void ShouldCatchException_forImproperDelimiter()  {
+        try {
+            Analyser analyser = new Analyser();
+            analyser.csvFileLoading("/home/user/Videos/StateCensusDataDuplicate.csv", "com.dummyTesting.StateCensusData");
         } catch (StateCensusAnalyserException e) {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.RUNTIME_ERROR, e.type);
         }
