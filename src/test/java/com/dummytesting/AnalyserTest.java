@@ -17,7 +17,7 @@ public class AnalyserTest {
         }
     }
     @Test
-    public void shoulReturnException_forImproperFile()  {
+    public void shoulReturnException_ForImproperFile()  {
         try {
             Analyser stateCensusAnalyser = new Analyser();
             stateCensusAnalyser.csvFileLoading("/home/user/VideosStateCode.csv", "com.dummytesting.StateCensusData");
@@ -26,7 +26,7 @@ public class AnalyserTest {
         }
     }
     @Test
-    public void shoulReturnException_forInCorrectType() {
+    public void shoulReturnException_ForInCorrectType() {
         try {
             Analyser stateCensusAnalyser = new Analyser();
             stateCensusAnalyser.csvFileLoading("/home/user/Videos/StateCode.pdf", "com.dummytesting.StateCensusData");
@@ -35,7 +35,7 @@ public class AnalyserTest {
         }
     }
     @Test
-    public void shouldCatchException_forImproperDelimiter()  {
+    public void shouldCatchException_ForImproperDelimiter()  {
         try {
             Analyser analyser = new Analyser();
             analyser.csvFileLoading("/home/user/Videos/StateCensusDataDuplicate.csv", "com.dummyTesting.StateCensusData");
@@ -44,7 +44,7 @@ public class AnalyserTest {
         }
     }
     @Test
-    public void shouldCatchException_forHavingNoHeaders() {
+    public void shouldCatchException_ForHavingNoHeaders() {
         try {
             Analyser analyser = new Analyser();
             analyser.csvFileLoading("/home/user/snap/StateCensusDataDuplicate.csv", "com.dummyTesting.StateCensusData");
@@ -53,7 +53,7 @@ public class AnalyserTest {
         }
     }
     @Test
-    public void shouldCatchException_inJsonfile()  {
+    public void shouldWriteFile_InToJsonfile()  {
         try {
             Analyser analyser = new Analyser();
             analyser.csvFileLoading("/home/user/snap/StateCensusData.csv","com.dummyTesting.StateCensusData");
