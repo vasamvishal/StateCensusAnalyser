@@ -41,4 +41,13 @@ public class AnalyserTest {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.RUNTIME_ERROR, e.type);
         }
     }
+    @Test
+    public void shouldCatchException_forHavingNoHeaders() {
+        try {
+            Analyser analyser = new Analyser();
+            analyser.csvFileLoading("/home/user/snap/StateCensusDataDuplicate.csv", "com.dummyTesting.StateCensusData");
+        } catch (StateCensusAnalyserException e) {
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.RUNTIME_ERROR, e.type);
+        }
+    }
 }
