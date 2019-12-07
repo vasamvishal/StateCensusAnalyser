@@ -23,4 +23,13 @@ public class AnalyserTest {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.NO_SUCHFILE, e.type);
         }
     }
+    @Test
+    public void shoulReturnException_forInCorrectType() {
+        try {
+            Analyser stateCensusAnalyser = new Analyser();
+            stateCensusAnalyser.csvFileLoading("/home/user/PicturesStateCode.pdf", "com.dummyTesting.StateCensusData");
+        } catch (StateCensusAnalyserException e) {
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.RUNTIME_ERROR, e.type);
+        }
+    }
 }
