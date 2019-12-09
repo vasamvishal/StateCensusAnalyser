@@ -80,15 +80,24 @@ public class AnalyserTest {
         }
     }
     @Test
-    public void shouldCatchException_ForImProperFileName_InJsonfile()  {
+    public void shouldCatchException_ForImProperFileName_InJsonfile() {
         try {
             Analyser analyser = new Analyser();
-            analyser.csvFileLoading("/home/user/snap/StateCensusData/.csv","com.dummyTesting.StateCensusData");
+            analyser.csvFileLoading("/home/user/snap/StateCensusData/.csv", "com.dummyTesting.StateCensusData");
             List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/State/CensusAnalyser.json");
-            Assert.assertEquals("Uttar Pradesh",stateCensusData.get(0).getState());
+            Assert.assertEquals("Uttar Pradesh", stateCensusData.get(0).getState());
         } catch (StateCensusAnalyserException e) {
-            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.NO_SUCHFILE,e.type);
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.NO_SUCHFILE, e.type);
         }
     }
-
+    @Test
+    public void shouldSortDataAlphabetically_ForStateName() {
+        try {
+            Analyser analyser = new Analyser();
+            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/StateName.json");
+            analyser.sortThisListBasedOnStateName(stateCensusData);
+        } catch (StateCensusAnalyserException e) {
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION,e.type);
+        }
+    }
 }
