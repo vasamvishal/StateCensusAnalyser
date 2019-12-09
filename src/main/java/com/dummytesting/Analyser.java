@@ -57,4 +57,8 @@ public class Analyser {
         }
         return recordList;
     }
+    public void sortThisListBasedOnStateName(List<StateCensusData> censusList) {
+        Comparator<StateCensusData> c = (s1, s2) -> s1.getState().compareTo(s2.getState());
+        censusList.sort(c);
+    }
 }
