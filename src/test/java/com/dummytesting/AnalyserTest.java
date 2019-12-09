@@ -53,14 +53,12 @@ public class AnalyserTest {
         }
     }
     @Test
-    public void shouldWriteFile_InToJsonfile()  {
+    public void shouldWriteFile_InToJsonfile() throws StateCensusAnalyserException {
         try {
             Analyser analyser = new Analyser();
             analyser.csvFileLoading("/home/user/snap/StateCensusData.csv","com.dummyTesting.StateCensusData");
             List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/AreaInSqKm.json");
             Assert.assertEquals("Uttar Pradesh",stateCensusData.get(0).getState());
-        } catch (StateCensusAnalyserException e) {
-            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION,e.type);
         }
     }
     @Test
@@ -68,21 +66,30 @@ public class AnalyserTest {
         try {
             Analyser analyser = new Analyser();
             analyser.csvFileLoading("/home/user/snapStateCensusData.csv","com.dummyTesting.StateCensusData");
-            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/AreaInSqKm.json");
-            Assert.assertEquals("Uttar Pradesh",stateCensusData.get(0).getState());
+            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/StateCensusAnalyser.json");
         } catch (StateCensusAnalyserException e) {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.NO_SUCHFILE,e.type);
         }
     }
     @Test
-    public void shouldCatchExceptionIOException_ForImProperJsonfile()  {
+    public void shouldCatchIOException_ForImProperJsonfile()  {
         try {
             Analyser analyser = new Analyser();
             analyser.csvFileLoading("/home/user/snap/StateCensusData/.csv","com.dummyTesting.StateCensusData");
-            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/AreaInSqKm.json");
-            Assert.assertEquals("Uttar Pradesh",stateCensusData.get(0).getState());
+            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/StateCensusAnalyser.json");
         } catch (StateCensusAnalyserException e) {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION,e.type);
+        }
+    }
+    @Test
+    public void shouldCatchException_ForImProperFileName_InJsonfile()  {
+        try {
+            Analyser analyser = new Analyser();
+            analyser.csvFileLoading("/home/user/snap/StateCensusData/.csv","com.dummyTesting.StateCensusData");
+            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/State/CensusAnalyser.json");
+            Assert.assertEquals("Uttar Pradesh",stateCensusData.get(0).getState());
+        } catch (StateCensusAnalyserException e) {
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.NO_SUCHFILE,e.type);
         }
     }
 }
