@@ -65,4 +65,8 @@ public class Analyser {
         Comparator<StateCensusData> c = Comparator.comparing(StateCensusData::getPopulation);
         censusList.sort(c);
     }
+    public static void sortThisListBasedOnAreaPerSqKm(List<StateCensusData> censusList) {
+        Comparator<StateCensusData> c = Comparator.comparing(StateCensusData::getAreaInSqKm);
+        censusList.sort(c);
+    }
 }

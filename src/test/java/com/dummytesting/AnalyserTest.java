@@ -110,4 +110,14 @@ public class AnalyserTest {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION,e.type);
         }
     }
+    @Test
+    public void shouldSortData_ForStateName_ByAreaPerSqKm() {
+        try {
+            Analyser analyser = new Analyser();
+            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/StateName.json");
+            analyser.sortThisListBasedOnAreaPerSqKm(stateCensusData);
+        } catch (StateCensusAnalyserException e) {
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION,e.type);
+        }
+    }
 }
