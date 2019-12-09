@@ -91,11 +91,21 @@ public class AnalyserTest {
         }
     }
     @Test
-    public void shouldSortDataAlphabetically_ForStateName() {
+    public void shouldSortDataAlphabetically_ForStateName()  {
         try {
             Analyser analyser = new Analyser();
             List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/StateName.json");
             analyser.sortThisListBasedOnStateName(stateCensusData);
+        } catch (StateCensusAnalyserException e){
+            Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION,e.type);
+        }
+    }
+    @Test
+    public void shouldSortData_ForStateName_ForPopulation() {
+        try {
+            Analyser analyser = new Analyser();
+            List<StateCensusData> stateCensusData = analyser.writeToJson("/home/user/Videos/StateName.json");
+            analyser.sortThisListBasedOnStatePopulation(stateCensusData);
         } catch (StateCensusAnalyserException e) {
             Assert.assertEquals(StateCensusAnalyserException.ExceptionType.INPUT_FILE_EXCEPTION,e.type);
         }
